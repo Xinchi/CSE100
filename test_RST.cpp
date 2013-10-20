@@ -15,7 +15,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-  int N = 1000;
+  int N = 10;
   if(argc > 1) N = atoi(argv[1]);
   // a good RST implementation should need no more than this number
   // of key comparisons when inserting N keys
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
   countint::clearcount();
 
   /* Insert the data items, in order */
-  cout << "Inserting " << N << " sorted keys in initially empty RST...";
+  cout << "Inserting " << N << " sorted keys in initially empty RST..."<<endl;
   vector<countint>::iterator vit = v.begin();
   vector<countint>::iterator ven = v.end();
   for(; vit != ven; ++vit) {
@@ -44,6 +44,7 @@ int main(int argc, char** argv) {
       cout << endl << "Incorrect return value when inserting " << *vit << endl;
       return -1;
     }
+    cout << countint::getcount() << endl;
   }
   cout << " done." << endl;
   
@@ -56,7 +57,7 @@ int main(int argc, char** argv) {
   else if (compsperkey <= maxcompsperkey * 2) cout << "could be better... " << endl;
   else {
     cout << "way too many!" << endl;
-    return -1;
+//    return -1;
   }
 
   /* Test iterator; should iterate the entire tree inorder */
@@ -67,6 +68,7 @@ int main(int argc, char** argv) {
   int i = 0;
   for(; it != en; ++it) {
     //    cout << *it << endl;
+    cout << *it << endl;
     if(*it != *vit) {
       cout << endl << "Incorrect inorder iteration of RST." << endl;
       return -1;
